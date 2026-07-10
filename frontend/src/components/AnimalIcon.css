@@ -1,0 +1,12 @@
+/* Icono de animal con textura de crayon (conserva su color original) */
+
+.animal-icon {
+  display: block;
+  user-select: none;
+  object-fit: contain;
+}
+
+/* Temblor de crayon animado, aplicado a la imagen */
+.animal-icon--crayon {
+  filter: url(#crayon);
+}

@@ -1,0 +1,336 @@
+/* Estilos del contenido de las paginas (el volteo lo maneja HTMLFlipBook) */
+
+.book-stage {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: clamp(12px, 3vw, 40px);
+}
+
+/* Sombra general del libro: luz desde arriba-izquierda, doble capa para volumen */
+.flip-book {
+  filter: drop-shadow(14px 10px 10px rgba(58, 46, 38, 0.22))
+    drop-shadow(28px 34px 44px rgba(58, 46, 38, 0.35));
+}
+
+/* Contenedores internos de StPageFlip: solo fondo opaco, sin tocar su layout */
+.stf__parent {
+  margin: 0 auto;
+}
+
+.stf__item {
+  background: var(--paper);
+}
+
+/* La hoja de papel: la libreria controla su posicion/tamano (estilos inline).
+   Aqui solo damos apariencia: fondo y recorte. NO fijar position ni width. */
+.page {
+  background: linear-gradient(180deg, var(--paper) 0%, #fdeecd 100%);
+  overflow: hidden;
+}
+
+/* Pliegue hacia el lomo: sombra profunda al centro + leve realce de luz al borde externo */
+.page--right {
+  box-shadow: inset 30px 0 40px -26px rgba(58, 46, 38, 0.55),
+    inset -8px 0 16px -14px rgba(255, 255, 255, 0.6);
+}
+
+.page--left {
+  box-shadow: inset -30px 0 40px -26px rgba(58, 46, 38, 0.55),
+    inset 8px 0 16px -14px rgba(255, 255, 255, 0.7);
+}
+
+/* Contenido interior de la pagina */
+.face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(18px, 3vw, 40px);
+  overflow: hidden;
+}
+
+.face::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border-radius: 14px;
+  box-shadow: inset 0 0 0 2px var(--paper-edge);
+  pointer-events: none;
+}
+
+.face-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: clamp(8px, 2vw, 16px);
+}
+
+.face-title {
+  font-size: clamp(1.4rem, 2.8vw, 2.1rem);
+  color: var(--primary-dark);
+  text-shadow: 2px 2px 0 #fff;
+  text-align: center;
+}
+
+.face-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 2vw, 18px);
+  text-align: center;
+  overflow: hidden;
+}
+
+.face-number {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--font-title);
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+
+/* ---- Portada / contraportada (tapas duras) ---- */
+.cover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: clamp(24px, 5vw, 52px);
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(150deg, var(--primary) 0%, var(--primary-dark) 60%, #c9542b 100%);
+  box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.35), inset 0 0 0 9px var(--primary-dark);
+}
+
+.cover--back {
+  background: linear-gradient(150deg, var(--secondary) 0%, var(--secondary-dark) 60%, #2c7891 100%);
+}
+
+/* Portada como imagen a sangre completa */
+.cover--image {
+  padding: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: none;
+}
+
+.cover__ornament {
+  font-size: clamp(3rem, 8vw, 5rem);
+  filter: drop-shadow(2px 5px 6px rgba(0, 0, 0, 0.3));
+}
+
+.cover__kicker {
+  font-family: var(--font-title);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.cover__title {
+  font-size: clamp(1.8rem, 4.6vw, 3rem);
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cover__hint {
+  margin-top: 8px;
+  font-family: var(--font-title);
+  background: rgba(255, 255, 255, 0.25);
+  padding: 10px 22px;
+  border-radius: 999px;
+}
+
+/* ---- Contenido reutilizable dentro de las caras ---- */
+.face-lead {
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  color: var(--ink-soft);
+}
+
+/* Pantalla de identificar: compacta, sin overflow */
+.identify {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  height: 100%;
+}
+
+/* Resultado inline: icono + nombre, clickeable para escuchar */
+.identify-answer {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 26px;
+  background: #fffdf7;
+  border-radius: 42px 46px 42px 48px / 48px 42px 46px 42px;
+  border: 4px solid #fff;
+  box-shadow: 0 0 0 3px var(--accent), 4px 5px 8px rgba(58, 46, 38, 0.22);
+}
+
+.identify-answer__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.1;
+}
+
+.identify-answer__name {
+  font-family: var(--font-title);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--ink);
+}
+
+.identify-answer__pct {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+/* Mensaje cuando no se reconoce el animal */
+.identify-unknown {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+
+/* Quiz: una pregunta completa (icono + hint + opciones) */
+.quiz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 100%;
+}
+
+.quiz__hint {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+}
+
+/* Quiz: botones de nombres (mismo ancho para todos) */
+.quiz-names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 260px;
+  max-width: 90%;
+}
+
+/* Botones tipo sticker: fondo de color, texto blanco, borde blanco y despegue */
+.name-btn {
+  box-sizing: border-box;
+  width: 100%;
+  display: block;
+  font-family: var(--font-title);
+  font-size: 1.3rem;
+  padding: 13px 24px;
+  color: #fff;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.18);
+  background: var(--secondary);
+  border-radius: 40px 44px 40px 46px / 46px 40px 44px 40px;
+  border: 4px solid #fff;
+  box-shadow: 0 0 0 2px rgba(58, 46, 38, 0.12), 4px 5px 8px rgba(58, 46, 38, 0.28);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.name-btn:not(:disabled):hover {
+  transform: scale(1.04) rotate(-1deg);
+  box-shadow: 0 0 0 2px rgba(58, 46, 38, 0.12), 5px 7px 11px rgba(58, 46, 38, 0.34);
+}
+
+.name-btn:disabled {
+  cursor: default;
+}
+
+/* Respuesta correcta: verde saturado */
+.name-btn--correct {
+  background: #3fbf3f;
+  box-shadow: 0 0 0 2px rgba(58, 46, 38, 0.12), 4px 5px 8px rgba(58, 46, 38, 0.28);
+}
+
+/* Respuesta equivocada: rojo saturado */
+.name-btn--wrong {
+  background: #ef3b52;
+  box-shadow: 0 0 0 2px rgba(58, 46, 38, 0.12), 4px 5px 8px rgba(58, 46, 38, 0.28);
+}
+
+/* Invitacion al quiz (pagina derecha de identificar) */
+.invite {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.invite__title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--primary-dark);
+  text-shadow: 2px 2px 0 #fff;
+}
+
+.invite__text {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+  max-width: 34ch;
+}
+
+/* Creditos en la contraportada */
+.credits-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+}
+
+.credits-hint {
+  font-family: var(--font-title);
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+.credits-list {
+  width: min(90%, 440px);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.credits-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 9px 4px;
+  border-bottom: 2px dotted rgba(255, 255, 255, 0.4);
+  text-align: left;
+}
+
+.credits-row dt {
+  font-family: var(--font-title);
+  font-weight: 700;
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+.credits-row dd {
+  text-align: right;
+}

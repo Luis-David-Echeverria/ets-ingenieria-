@@ -1,0 +1,22 @@
+# Dependencias
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+
+# Dataset (pesado, no versionar)
+archive/
+
+# El modelo entrenado SI se versiona (lo necesita el deploy) -> no se ignora
+# El build del frontend SI se versiona (el backend lo sirve) -> no se ignora
+
+# Temporales
+proy_ets199.pdf
+docs/~$*.docx
+docs/*.backup.docx
+docs/imagenes/pantallas/
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.log

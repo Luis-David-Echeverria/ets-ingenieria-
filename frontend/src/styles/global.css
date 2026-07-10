@@ -1,0 +1,86 @@
+/* Tema de cuento infantil — variables, tipografia y base */
+
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap");
+
+/* Fuente de titulos: crayon (DaFont DK Cool Crayon) */
+@font-face {
+  font-family: "DK Cool Crayon";
+  src: url("/DK Cool Crayon.ttf") format("truetype");
+  font-display: swap;
+}
+
+:root {
+  /* Paleta calida de cuento */
+  --paper: #fef6e4;
+  --paper-edge: #f3e0bd;
+  --ink: #3a2e26;
+  --ink-soft: #6b5a4c;
+  --primary: #ff8b5e;
+  --primary-dark: #e86f42;
+  --secondary: #5eb3ce;
+  --secondary-dark: #3d94b0;
+  --accent: #ffc94d;
+  --success: #7ac74f;
+  --error: #ef5b6b;
+  --leaf: #9bc995;
+
+  --shadow-soft: 0 10px 30px rgba(58, 46, 38, 0.15);
+  --shadow-page: 0 20px 60px rgba(58, 46, 38, 0.25);
+  --radius: 22px;
+
+  --font-title: "DK Cool Crayon", "Quicksand", system-ui, sans-serif;
+  --font-body: "Quicksand", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  /* Fondo de escritorio escolar, fijo para no descuadrar al voltear */
+  background: url("/flat-lay-back-school-still-life-assortment.jpg") center / cover no-repeat fixed,
+    #d9b98c;
+  overflow: hidden;
+}
+
+#root {
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-title);
+  line-height: 1.1;
+}
+
+button {
+  font-family: var(--font-title);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Utilidad de lectura para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}

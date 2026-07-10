@@ -1,0 +1,42 @@
+/* Adornos de patas y hojas repartidos por la pagina */
+
+.decorations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.deco {
+  position: absolute;
+  opacity: 0.16;
+  width: 90px;
+}
+
+.deco--leaf-1 {
+  top: 6%;
+  left: 8%;
+  width: 110px;
+  transform: rotate(-18deg);
+}
+
+.deco--paw-1 {
+  bottom: 12%;
+  right: 10%;
+  width: 70px;
+  transform: rotate(12deg);
+}
+
+.deco--leaf-2 {
+  bottom: 8%;
+  left: 12%;
+  width: 80px;
+  transform: rotate(24deg);
+}
+
+.deco--paw-2 {
+  top: 14%;
+  right: 12%;
+  width: 85px;
+  transform: rotate(-8deg);
+}

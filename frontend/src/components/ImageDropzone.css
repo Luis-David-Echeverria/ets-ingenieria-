@@ -1,0 +1,54 @@
+/* Zona de subida de imagen */
+
+/* Marco tipo recorte pegado en el libro */
+.dropzone {
+  width: min(320px, 86%);
+  height: 300px;
+  display: grid;
+  place-items: center;
+  padding: 14px;
+  background: #fffdf7;
+  border: 6px solid #fff;
+  border-radius: 18px 22px 16px 24px;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 0 0 3px var(--paper-edge), 5px 6px 12px rgba(58, 46, 38, 0.24);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.dropzone--active {
+  transform: rotate(-1deg);
+  box-shadow: 0 0 0 3px var(--primary), 6px 8px 14px rgba(58, 46, 38, 0.3);
+}
+
+.dropzone__hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: var(--ink-soft);
+  gap: 6px;
+}
+
+.dropzone__hint .animal-icon {
+  margin-bottom: 4px;
+}
+
+.dropzone__hint p {
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  color: var(--ink);
+}
+
+.dropzone__error {
+  color: var(--error);
+  font-family: var(--font-title);
+  font-weight: 600;
+}
+
+.dropzone__preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}

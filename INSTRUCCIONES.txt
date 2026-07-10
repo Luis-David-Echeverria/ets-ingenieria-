@@ -1,0 +1,106 @@
+========================================================================
+  EL GRAN LIBRO DE LOS ANIMALES
+  Clasificador de especies de animales para ninos
+  Alumno: Luis David Echeverria Perez  -  Boleta: 2022630724
+========================================================================
+
+Este sistema clasifica especies de animales a partir de imagenes, con
+dos modos: identificar un animal por foto (con voz) y un quiz de
+adivinanza. El modelo ya viene entrenado, no hay que entrenar nada.
+
+Hay DOS formas de ejecutarlo. La FORMA A es la mas simple.
+
+
+------------------------------------------------------------------------
+  REQUISITOS
+------------------------------------------------------------------------
+
+# Instalar Python 3.12 desde https://www.python.org/downloads/
+  (Al instalar, marcar la casilla "Add Python to PATH")
+
+Solo para la FORMA B se necesita ademas Node.js o Bun.
+
+
+========================================================================
+  FORMA A  -  SOLO PYTHON (recomendada, mas simple)
+========================================================================
+
+El backend sirve la pagina web ya construida. No se necesita Node ni Bun.
+
+# Abrir una terminal dentro de la carpeta del proyecto
+
+# Entrar a la carpeta del backend:
+cd backend
+
+# Crear un entorno virtual de Python:
+python -m venv .venv
+
+# Activar el entorno virtual (Windows):
+.venv\Scripts\activate
+
+# Instalar las dependencias:
+pip install -r requirements.txt
+
+# Iniciar el servidor:
+python -m uvicorn main:app --port 8000
+
+# Abrir el navegador en:
+http://localhost:8000
+
+Para detener el servidor: presionar Ctrl + C en la terminal.
+
+
+========================================================================
+  FORMA B  -  MODO DESARROLLO (backend + frontend por separado)
+========================================================================
+
+Requiere dos terminales abiertas al mismo tiempo.
+
+--- Terminal 1: BACKEND ---
+
+# Entrar a la carpeta del backend:
+cd backend
+
+# Crear el entorno virtual:
+python -m venv .venv
+
+# Activar el entorno virtual (Windows):
+.venv\Scripts\activate
+
+# Instalar dependencias:
+pip install -r requirements.txt
+
+# Iniciar el servidor de la API:
+python -m uvicorn main:app --port 8000
+
+--- Terminal 2: FRONTEND ---
+
+# Entrar a la carpeta del frontend:
+cd frontend
+
+# Instalar dependencias (con npm):
+npm install
+
+# Iniciar el servidor de desarrollo:
+npm run dev
+
+# Abrir el navegador en la direccion que muestre la terminal
+  (normalmente http://localhost:5173)
+
+Nota: si se prefiere Bun en lugar de npm, usar "bun install" y "bun dev".
+
+
+========================================================================
+  NOTAS
+========================================================================
+
+- La primera prediccion tras iniciar el servidor tarda unos segundos
+  (el modelo se carga en memoria); despues es inmediata.
+
+- El sistema reconoce 10 especies: perro, gato, caballo, elefante,
+  mariposa, gallina, vaca, oveja, arana y ardilla.
+
+- Para escuchar el nombre en voz alta, el navegador debe permitir audio.
+
+- El modelo entrenado esta en backend/models/animals.pt (no hay que
+  entrenar nada).
