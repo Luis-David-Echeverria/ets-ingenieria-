@@ -1,0 +1,15 @@
+# Configuracion de despliegue en Render (free tier)
+# Un solo servicio: el backend FastAPI que ademas sirve el frontend ya construido.
+
+services:
+  - type: web
+    name: gran-libro-animales
+    runtime: python
+    plan: free
+    # Instalar dependencias del backend (PyTorch CPU segun requirements.txt)
+    buildCommand: "pip install -r backend/requirements.txt"
+    # Arrancar el servidor en el puerto que asigna Render
+    startCommand: "cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.10"
