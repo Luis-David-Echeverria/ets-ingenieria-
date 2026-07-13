@@ -7,14 +7,13 @@ __pycache__/
 # Dataset (pesado, no versionar)
 archive/
 
-# El modelo entrenado SI se versiona (lo necesita el deploy) -> no se ignora
-# El build del frontend SI se versiona (el backend lo sirve) -> no se ignora
-
-# Temporales
-proy_ets199.pdf
-docs/~$*.docx
-docs/*.backup.docx
-docs/imagenes/pantallas/
+# Documentacion y scripts de generacion (no van en el repo del codigo)
+docs/
+backend/gen_diagramas.py
+backend/gen_documento.py
+backend/agregar_pantallas.py
+backend/evaluate.py
+INSTRUCCIONES.txt
 
 # Sistema
 .DS_Store
